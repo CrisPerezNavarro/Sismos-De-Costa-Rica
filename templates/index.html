@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación de Sismos</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px; /* Altura del mapa */
+            width: 100%; /* Ancho del mapa */
+        }
+    </style>
+</head>
+<body>
+    <h1>Últimos Sismos en Costa Rica</h1>
+    <div id="sismos">
+        {% if sismos.empty %}
+            <p>No se encontraron sismos recientes.</p>
+        {% else %}
+            <ul id="sismos-list">
+                {% for index, sismo in sismos.iterrows() %}
+                    <li>
+                        {{ sismo['Fecha'] }} {{ sismo['Hora Local'] }} - Magnitud: {{ sismo['Magnitud'] }} - Localización: {{ sismo['Localización'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <h2>Mapa de Sismos</h2>
+    <div id="map"></div> <!-- Contenedor para el mapa -->
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Solicitar permiso para notificaciones
+        if (Notification.permission !== 'granted') {
+            Notification.requestPermission();
+        }
+
+        // Inicializar el mapa centrado en Costa Rica
+        var map = L.map('map').setView([9.9281, -84.0907], 7);
+
+        // Añadir una capa de mapa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        let sismosPrevios = []; // Almacenar sismos previos
+
+        // Función para actualizar la lista de sismos y el mapa
+        function actualizarSismos() {
+            fetch('/actualizar_sismos')  // Asegúrate de que esta ruta esté configurada correctamente en tu servidor Flask
+                .then(response => response.json())
+                .then(sismos => {
+                    // Limpiar la lista de sismos
+                    const sismosList = document.getElementById('sismos-list');
+                    sismosList.innerHTML = '';
+
+                    // Limpiar los marcadores en el mapa
+                    map.eachLayer(function (layer) {
+                        if (layer instanceof L.Marker) {
+                            map.removeLayer(layer);
+                        }
+                    });
+
+                    // Comprobar si hay nuevos sismos
+                    const nuevosSismos = sismos.filter(s => !sismosPrevios.some(prev => prev['Fecha'] === s['Fecha'] && prev['Hora Local'] === s['Hora Local']));
+
+                    if (nuevosSismos.length > 0) {
+                        // Mostrar notificación
+                        if (Notification.permission === 'granted') {
+                            nuevosSismos.forEach(sismo => {
+                                new Notification("Nuevo Sismo", {
+                                    body: `Magnitud: ${sismo['Magnitud']} - Localización: ${sismo['Localización']}`,
+                                    icon: 'https://example.com/icon.png' // Cambia esta URL por la de un icono que quieras usar
+                                });
+                            });
+                        }
+                    }
+
+                    // Actualizar lista de sismos previos
+                    sismosPrevios = sismos.map(s => ({ 'Fecha': s['Fecha'], 'Hora Local': s['Hora Local'], 'Magnitud': s['Magnitud'], 'Localización': s['Localización'], 'Latitud': s['Latitud'], 'Longitud': s['Longitud'] }));
+
+                    // Añadir nuevos sismos a la lista y marcadores al mapa
+                    sismos.forEach((sismo, index) => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `${sismo['Fecha']} ${sismo['Hora Local']} - Magnitud: ${sismo['Magnitud']} - Localización: ${sismo['Localización']}`;
+                        sismosList.appendChild(listItem);
+
+                        // Crear un marcador para el sismo
+                        const marker = L.marker([sismo['Latitud'], sismo['Longitud']]).addTo(map)
+                            .bindPopup(`<b>${sismo['Fecha']} ${sismo['Hora Local']}</b><br>Magnitud: ${sismo['Magnitud']}<br>Localización: ${sismo['Localización']}`);
+
+                        // Agregar un evento de clic al marcador
+                        marker.on('click', () => {
+                            // Resaltar el sismo en la lista
+                            const listItems = document.querySelectorAll('#sismos-list li');
+                            listItems.forEach((item, i) => {
+                                if (i === index) {
+                                    item.style.fontWeight = 'bold'; // Resalta el sismo seleccionado
+                                    item.style.color = 'red'; // Cambia el color del texto
+                                } else {
+                                    item.style.fontWeight = 'normal'; // Restaura el estilo de otros sismos
+                                    item.style.color = 'black'; // Restaura el color del texto
+                                }
+                            });
+
+                            // Desplazar la lista hacia el sismo seleccionado (opcional)
+                            listItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        });
+                    });
+                })
+                .catch(error => console.error('Error al actualizar los sismos:', error));
+        }
+
+        // Actualizar sismos cada 60 segundos
+        setInterval(actualizarSismos, 60000);
+    </script>
+</body>
+</html>
+   

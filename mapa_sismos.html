@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8a93bbbec19070d91f71d48ebcaf8bec {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8a93bbbec19070d91f71d48ebcaf8bec" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8a93bbbec19070d91f71d48ebcaf8bec = L.map(
+                "map_8a93bbbec19070d91f71d48ebcaf8bec",
+                {
+                    center: [9.9281, -84.0907],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a00ecf8a0a44787be8e7398e7eaf911b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_a00ecf8a0a44787be8e7398e7eaf911b.addTo(map_8a93bbbec19070d91f71d48ebcaf8bec);
+        
+    
+            var marker_c7d5855d00771cc2576280caafe5b152 = L.marker(
+                [9.13, -82.753],
+                {}
+            ).addTo(map_8a93bbbec19070d91f71d48ebcaf8bec);
+        
+    
+            var icon_b56093836ef8aac0d0a432ea0b7a4c51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c7d5855d00771cc2576280caafe5b152.setIcon(icon_b56093836ef8aac0d0a432ea0b7a4c51);
+        
+    
+        var popup_16d46da3b2c3eb7d1ff9c3f020b9e181 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6f5973cc5e6a4d79a963c4e9429f0d8e = $(`<div id="html_6f5973cc5e6a4d79a963c4e9429f0d8e" style="width: 100.0%; height: 100.0%;">04 de noviembre del 2024. 2:49 pm.<br>Magnitud: 2,7 Mw.<br>Localización: 31 km al Noreste de Pittier, Coto Brus.</div>`)[0];
+                popup_16d46da3b2c3eb7d1ff9c3f020b9e181.setContent(html_6f5973cc5e6a4d79a963c4e9429f0d8e);
+            
+        
+
+        marker_c7d5855d00771cc2576280caafe5b152.bindPopup(popup_16d46da3b2c3eb7d1ff9c3f020b9e181)
+        ;
+
+        
+    
+    
+            var marker_7a7a9c8139dd372875c726fd9d341c2e = L.marker(
+                [10.451, -86.162],
+                {}
+            ).addTo(map_8a93bbbec19070d91f71d48ebcaf8bec);
+        
+    
+            var icon_54c94d88a66a87585a7735122597192e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7a7a9c8139dd372875c726fd9d341c2e.setIcon(icon_54c94d88a66a87585a7735122597192e);
+        
+    
+        var popup_bab67c4d4329ebcd3e819f015b3a17fb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fb34fb3ab82ec2a945d35c6ad7d477bd = $(`<div id="html_fb34fb3ab82ec2a945d35c6ad7d477bd" style="width: 100.0%; height: 100.0%;">04 de noviembre del 2024. 1:11 am.<br>Magnitud: 3,7 Mw.<br>Localización: 39 km al Oeste de Cabo Velas, Guanacaste.</div>`)[0];
+                popup_bab67c4d4329ebcd3e819f015b3a17fb.setContent(html_fb34fb3ab82ec2a945d35c6ad7d477bd);
+            
+        
+
+        marker_7a7a9c8139dd372875c726fd9d341c2e.bindPopup(popup_bab67c4d4329ebcd3e819f015b3a17fb)
+        ;
+
+        
+    
+    
+            var marker_5e9fa97bd00262c5c03ba0fdcc8124cb = L.marker(
+                [10.377, -86.318],
+                {}
+            ).addTo(map_8a93bbbec19070d91f71d48ebcaf8bec);
+        
+    
+            var icon_63a4a422b73ecb5ef3b7cf7f6f55dd65 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5e9fa97bd00262c5c03ba0fdcc8124cb.setIcon(icon_63a4a422b73ecb5ef3b7cf7f6f55dd65);
+        
+    
+        var popup_08e66b5decbf3cce0bf3452736e1ad6d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a6ab083945d234589c57d34ee6e13a7e = $(`<div id="html_a6ab083945d234589c57d34ee6e13a7e" style="width: 100.0%; height: 100.0%;">04 de noviembre del 2024. 12:46 am.<br>Magnitud: 4,1 Mw.<br>Localización: 55 km al Oeste de Cabo Velas, Guanacaste.</div>`)[0];
+                popup_08e66b5decbf3cce0bf3452736e1ad6d.setContent(html_a6ab083945d234589c57d34ee6e13a7e);
+            
+        
+
+        marker_5e9fa97bd00262c5c03ba0fdcc8124cb.bindPopup(popup_08e66b5decbf3cce0bf3452736e1ad6d)
+        ;
+
+        
+    
+    
+            var marker_d97d6be5f7b54235f3257e6fc02871f6 = L.marker(
+                [10.47, -86.01],
+                {}
+            ).addTo(map_8a93bbbec19070d91f71d48ebcaf8bec);
+        
+    
+            var icon_ac73f5fd2c12fa8bc71ebc78501ae0d1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d97d6be5f7b54235f3257e6fc02871f6.setIcon(icon_ac73f5fd2c12fa8bc71ebc78501ae0d1);
+        
+    
+        var popup_000f7afac6311a15bf78f87c4793d6ce = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fcbcd800917e3da59701adec83cc6b1c = $(`<div id="html_fcbcd800917e3da59701adec83cc6b1c" style="width: 100.0%; height: 100.0%;">03 de noviembre del 2024. 10:28 pm.<br>Magnitud: 2,7 Mw.<br>Localización: 24 km al Oeste de Conchal, Guanacaste.</div>`)[0];
+                popup_000f7afac6311a15bf78f87c4793d6ce.setContent(html_fcbcd800917e3da59701adec83cc6b1c);
+            
+        
+
+        marker_d97d6be5f7b54235f3257e6fc02871f6.bindPopup(popup_000f7afac6311a15bf78f87c4793d6ce)
+        ;
+
+        
+    
+    
+            var marker_2ddeab0ac0fbd3b29bb50b202e9f6c62 = L.marker(
+                [9.399, -84.325],
+                {}
+            ).addTo(map_8a93bbbec19070d91f71d48ebcaf8bec);
+        
+    
+            var icon_25d2ac68612db1ff4f400f03cbd65941 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2ddeab0ac0fbd3b29bb50b202e9f6c62.setIcon(icon_25d2ac68612db1ff4f400f03cbd65941);
+        
+    
+        var popup_81747c7a130650a5a51a6bdfb393ce3d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_de50cac8ac77d869d48b65f3c9c7c1af = $(`<div id="html_de50cac8ac77d869d48b65f3c9c7c1af" style="width: 100.0%; height: 100.0%;">03 de noviembre del 2024. 7:00 pm.<br>Magnitud: 3,0 Mw.<br>Localización: 13 km al Sur de Parrita, Puntarenas.</div>`)[0];
+                popup_81747c7a130650a5a51a6bdfb393ce3d.setContent(html_de50cac8ac77d869d48b65f3c9c7c1af);
+            
+        
+
+        marker_2ddeab0ac0fbd3b29bb50b202e9f6c62.bindPopup(popup_81747c7a130650a5a51a6bdfb393ce3d)
+        ;
+
+        
+    
+</script>
+</html>
